@@ -1,0 +1,37 @@
+.header {
+    display: inline-block;
+    padding: 0 3rem;
+    background-color: var(--color-primary-blue);
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    width: 68%;
+
+    &_list {
+        list-style: none;
+        display: flex;
+        padding-left: 6rem;
+        font-size: 1.3rem;
+        cursor: pointer;
+        margin: 1rem 0;
+    }
+
+    &_logo {
+        height: 4rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(0.8rem, 0.8rem);
+    }
+
+    &_item {
+        padding: 1rem 2rem;
+
+        &:hover {
+            background-color: var(--color-primary-white);;
+            color: var(--color-primary-blue);
+            transition: all cubic-bezier(1, 0, 0, 1) 0.35s;
+        }
+    }
+}

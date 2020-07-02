@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Constants } from 'src/providers/constants.services';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'blogster';
+  title = 'Blogster';
+  ICON_BASE = Constants.ICON_BASE;
 }
