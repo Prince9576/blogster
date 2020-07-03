@@ -1,10 +1,14 @@
 import { NgModule } from "@angular/core";
-import { HeaderComponent } from 'src/components/header/header.component';
-import { FooterComponent } from '../components/footer/footer.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-    declarations: [ HeaderComponent, FooterComponent ],
-    imports: [],
-    exports: [ HeaderComponent, FooterComponent ],
+    declarations: [
+                  ],
+    imports: [
+        MatButtonModule,
+    ],
+    exports: [ 
+               MatButtonModule
+             ],
 })
 export class SharedModule {}

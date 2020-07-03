@@ -7,31 +7,9 @@
     <div class="landing_content">
       <!--Header-->
       <app-header></app-header>
-      <!--Heading-->
-      <div class="landing_heading">
-        <p class="landing_heading--text">
-          Blogster
-        </p>
+      <div class="relative" [@routeAnimations]="prepareRoute(outlet)" >
+        <router-outlet #outlet= "outlet"></router-outlet>
       </div>
-      <!--Subheading-->
-      <div class="landing_subheading">
-        <p class="landing_subheading--text">
-          Your own bloging website.
-        </p>
-      </div>
-      <!--Paragraph-->
-      <div class="landing_para">
-        <p class="para--text">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus quidem nam dicta consequatur, 
-          explicabo voluptatum sed inventore quo magni. Incidunt, exercitationem ullam nihil 
-          esse atque fugiat neque ex ipsum. Quia.
-        </p>
-      </div>
-      <!--Button-->
-      <button class="landing_btn--started" 
-      mat-raised-button>
-      <span class="mr-icon-min"> Get Started </span> <i class="fas fa-chevron-right"></i>
-      </button>
     </div>
 </div>
 <app-footer></app-footer>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Constants } from 'src/providers/constants.services';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -8,4 +9,7 @@ import { Constants } from 'src/providers/constants.services';
 })
 export class HeaderComponent {
     ICON_BASE = Constants.ICON_BASE;
+
+    constructor( private router: Router ) {}
+
 }
