@@ -1,46 +1,23 @@
-.header {
-    display: inline-block;
-    padding: 0 3rem;
-    background-color: var(--color-primary-blue);
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 2px;
-    position: relative;
 
-    &_list {
-        list-style: none;
-        display: flex;
-        padding-left: 6rem;
-        font-size: 1.3rem;
-        cursor: pointer;
-        margin: 1rem 0;
-        min-height: 3.5rem;
-        align-items: center;
-    }
-
-    &_logo {
-        height: 4rem;
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: translate(0.8rem, 0.8rem);
-    }
-
-    &_item {
-        a {
-            text-decoration: none;
-            padding: 1rem 2rem;
-            color: var(--color-primary-white);
-        }
-        a:hover {
+.navbar-custom {
+    box-shadow: 0 5px 10px #efefef;
+    color: var(--color-primary-white);
+    font-size: 1.3rem;
+    a {
+        color: var(--color-primary-white);
+        padding-left: 2rem;
+        padding-right: 2rem;
+        &:hover {
             background-color: var(--color-primary-white);
             color: var(--color-primary-blue);
             transition: all cubic-bezier(1, 0, 0, 1) 0.35s;
         }
     }
 }
-
 .active {
     background-color: var(--color-primary-white);
     color: var(--color-primary-blue) !important;
 }
+
+// For toggler to be white
+.navbar-light .navbar-toggler-icon { 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }

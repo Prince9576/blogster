@@ -28,6 +28,19 @@ $blogster-theme: mat-light-theme($blogster-primary, $blogster-accent, $blogster-
 
 /* You can add global styles to this file, and also import other style files */
 
+html {
+    font-size: 16px;
+}
+
+// Setting font
+@media only screen
+and (max-width: 450px)
+and (orientation: portrait) {
+    html {
+        font-size: 12px;
+    }
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Raleway', "Helvetica Neue", sans-serif; }
 

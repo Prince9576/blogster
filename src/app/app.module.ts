@@ -11,6 +11,8 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { HomeComponent } from 'src/components/home/home.component';
 import { AuthComponent } from '../components/auth/auth.component';
 import { ContactComponent } from '../components/contact/contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeviceInfoProvider } from 'src/providers/device-info.services';
 
 
 @NgModule({
@@ -26,9 +28,11 @@ import { ContactComponent } from '../components/contact/contact.component';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
   ],
-  providers: [ Constants ],
+  providers: [ Constants, DeviceInfoProvider ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

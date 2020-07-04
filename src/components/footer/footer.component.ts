@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceInfoProvider } from 'src/providers/device-info.services';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  isMobile: boolean;
+  constructor( private deviceInfoProvider: DeviceInfoProvider ) { }
 
   ngOnInit(): void {
+    this.isMobile = this.deviceInfoProvider.isMobileDevice();
+    console.log("Is mobile", this.isMobile);
   }
 
 }

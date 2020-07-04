@@ -1,1 +1,78 @@
-<p>auth works!</p>
+
+<div class="auth-wrapper">
+    <mat-tab-group>
+        <mat-tab label="Login">
+            <div class="login-logo">
+                <img class = "login-logo_image" src="{{ICON_BASE}}login.svg">
+                <div class="credit">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+                    Freepik
+                </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            </div>
+            <div class="form-content-wrapper login-content">
+                <form [formGroup]= "loginForm" (ngSubmit)= "submitLoginForm()" class="mt-2">
+                    <div class="control">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Enter your email</mat-label>
+                            <input formControlName= "email" matInput>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="control">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Enter your password</mat-label>
+                            <input formControlName= "password" matInput [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="fomr-btn">
+                        <button mat-raised-button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+        <mat-tab label="Signup"> 
+            <div class="form-content-wrapper">
+                <form [formGroup]= "signupForm" (ngSubmit)= "submitLoginForm()">
+
+                    <div class="control">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Enter your name</mat-label>
+                            <input formControlName= "name" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="control">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Enter your email</mat-label>
+                            <input formControlName= "email" matInput>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="control">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Enter your password</mat-label>
+                            <input formControlName= "password" matInput [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="control">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Enter your number</mat-label>
+                            <input formControlName= "phone" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="fomr-btn">
+                        <button mat-raised-button type="submit">Signup</button>
+                    </div>
+                </form>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

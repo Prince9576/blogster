@@ -1,15 +1,20 @@
-
-<div class="landing" >
-  <div class="landing_circle"></div>
-    <div class="landing_image">
-      <img class="landing_image--src" src="{{ICON_BASE}}background_cropped.jpg">
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <img class="img-fluid" src="{{ICON_BASE}}background_cropped.jpg">
     </div>
-    <div class="landing_content">
-      <!--Header-->
-      <app-header></app-header>
-      <div class="relative" [@routeAnimations]="prepareRoute(outlet)" >
-        <router-outlet #outlet= "outlet"></router-outlet>
+    <div class="col-sm">
+      <div class="container custom-wrapper">
+        <div class="row">
+          <div class="col-sm">
+            <div [@routeAnimations]="prepareRoute(outlet)" >
+              <router-outlet #outlet= "outlet"></router-outlet>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>
 <app-footer></app-footer>
