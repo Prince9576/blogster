@@ -55,60 +55,7 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        .footer_social {
-
-            &--icons {
-                display: flex;
-                padding-right: 4rem;
-                a {
-                    background-color: #33353d;
-                    color: #818a91;
-                    font-size: 1.2rem;
-                    display: inline-block;
-                    line-height: 44px;
-                    width: 3rem;
-                    height: 3rem;
-                    text-align: center;
-                    margin-right: 1rem;
-                    border-radius: 100%;
-                    transition: all 0.2s linear;
-                    position: relative;
-
-                    i {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                    }
-                }
-
-                .facebook:hover
-                    {
-                        background-color:#3b5998;
-                        color: var(--color-primary-white);
-                    }
-                .twitter:hover
-                    {
-                        background-color:#00aced;
-                        color: var(--color-primary-white);
-                    }
-                .linkedin:hover
-                    {
-                        background-color:#007bb6;
-                        color: var(--color-primary-white);
-                    }
-                .dribbble:hover
-                    {
-                        background-color:#ea4c89;
-                        color: var(--color-primary-white);
-                    }
-                .github:hover
-                    {
-                        background-color: var(--color-primary-white);
-                        color: #000000;
-                    }
-            }
-        }
+        
     }
 }
 

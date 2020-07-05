@@ -47,6 +47,10 @@ body { margin: 0; font-family: 'Raleway', "Helvetica Neue", sans-serif; }
 
 
 // ****Utilities****
+
+button:focus {
+    outline: none !important;
+}
 // Margin top
 .mt-1 {
    margin-top: 1rem;

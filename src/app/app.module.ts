@@ -13,6 +13,7 @@ import { AuthComponent } from '../components/auth/auth.component';
 import { ContactComponent } from '../components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeviceInfoProvider } from 'src/providers/device-info.services';
+import { SocialLinksComponent } from '../components/social-links/social-links.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DeviceInfoProvider } from 'src/providers/device-info.services';
     HomeComponent,
     AuthComponent,
     ContactComponent,
+    SocialLinksComponent,
   ],
   imports: [
     BrowserModule,
