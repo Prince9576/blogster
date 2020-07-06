@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid card-container">
     <div class="blogs-wrapper">
         <div class="row">
             <mat-slide-toggle (input)= "sliderChanged()">Show only my blogs!</mat-slide-toggle>
@@ -10,7 +10,8 @@
                 </div>
                 <hr>
                 <div class="blog_body">
-                    {{ blog.body }}
+                    {{ blog.body | shorten: 100 }}
+                    <span>View More</span>
                 </div>
                 <hr>
                 <div class="blog_footer row">

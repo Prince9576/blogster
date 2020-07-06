@@ -44,6 +44,7 @@ export class BlogsComponent implements OnInit {
       love: 2
     },
   ]
+
   constructor() { }
 
   ngOnInit(): void {

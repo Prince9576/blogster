@@ -1,7 +1,8 @@
 .container-fluid {
     background-color: #ffffff;
     min-height: 100vh;
-    max-width: 80%;
+    max-width: 90%;
+    margin-bottom: 5rem;
 }
 .profile-wrapper {
     position: relative;
@@ -39,3 +40,12 @@
 .details-wrapper {
     margin-top: 5rem;
 }
+
+@media only screen
+and (max-width: 450px)
+and (orientation: portrait) {
+    .container-fluid {
+        width: 100%;
+        padding: 0;
+    }
+}   

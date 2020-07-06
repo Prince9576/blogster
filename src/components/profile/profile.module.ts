@@ -7,6 +7,9 @@ import { AboutComponent } from './about/about.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { PostComponent } from './post/post.component';
 import { CommonModule } from '@angular/common';
+import { ShortenPipe } from 'src/pipes/shorten.pipe';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
     { path: '', component: ProfileComponent }
@@ -18,11 +21,16 @@ const routes: Routes = [
         AboutComponent,
         BlogsComponent,
         PostComponent,
+        ShortenPipe
     ],
     imports: [ 
                CommonModule,
                SharedModule, 
-               RouterModule.forChild(routes) ],
+               RouterModule.forChild(routes),
+               CKEditorModule,
+               FormsModule,
+               ReactiveFormsModule
+             ],
     exports: []
 })
 

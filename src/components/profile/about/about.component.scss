@@ -1,8 +1,3 @@
-.container-fluid {
-    padding: 8px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    margin-bottom: 5rem;
-}
 
 .about-title {
     font-size: 1.6rem;
@@ -49,16 +44,6 @@
         margin-right: 10px;
         font-size: 1.3rem;
     }
-    // &:first-child {
-    //     border-bottom: 1px solid var(--color-footer-hr);
-    //     padding-bottom: 1rem;
-    //     margin-top: 1rem;
-
-    //     div {
-    //         font-size: 1.4rem;
-    //         letter-spacing: 1px;
-    //     }
-    // }
 
     .icon-1 { color: #0049B7; }
     .icon-2 { color: var(--color-primary-orange) }
@@ -66,4 +51,12 @@
     .icon-4 { color: deeppink; }
     .icon-5 { color: #68d388; }
     .icon-6 { color: red }
+}
+
+@media only screen
+and (max-width: 450px)
+and (orientation: portrait) {
+    .card-container {
+        height: auto;
+    }
 }
