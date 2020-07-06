@@ -5,13 +5,18 @@
     font-size: 1.3rem;
     a {
         color: var(--color-primary-white);
-        padding-left: 2rem;
+        padding-left: 1rem;
         padding-right: 2rem;
         &:hover {
             background-color: var(--color-primary-white);
             color: var(--color-primary-blue);
             transition: all cubic-bezier(1, 0, 0, 1) 0.35s;
         }
+    }
+}
+.navbar-brand {
+    i {
+        font-size: 1.9rem;
     }
 }
 .active {

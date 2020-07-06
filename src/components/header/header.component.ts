@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Constants } from 'src/providers/constants.services';
+import { Constants } from 'src/providers/constants.service';
 import { Router } from '@angular/router';
 
 @Component({

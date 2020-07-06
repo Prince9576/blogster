@@ -1,20 +1,26 @@
 <app-header></app-header>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm">
-      <img class="img-fluid" src="{{ICON_BASE}}background_cropped.jpg">
-    </div>
-    <div class="col-sm">
-      <div class="container custom-wrapper">
-        <div class="row">
-          <div class="col-sm padding-fix">
-            <div [@routeAnimations]="prepareRoute(outlet)" >
-              <router-outlet #outlet= "outlet"></router-outlet>
+  <ng-container *ngIf= "isLoggedIn">
+    <router-outlet></router-outlet>
+  </ng-container>
+
+  <ng-container *ngIf= "!isLoggedIn">
+    <div class="row">
+      <div class="col-sm">
+        <img class="img-fluid" src="{{ICON_BASE}}background_cropped.jpg">
+      </div>
+      <div class="col-sm">
+        <div class="container custom-wrapper">
+          <div class="row">
+            <div class="col-sm padding-fix">
+              <div [@routeAnimations]="prepareRoute(outlet)" >
+                <router-outlet #outlet= "outlet"></router-outlet>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>
 <app-footer></app-footer>

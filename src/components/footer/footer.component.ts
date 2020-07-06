@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceInfoProvider } from 'src/providers/device-info.services';
+import { DeviceInfoProvider } from 'src/providers/device-info.service';
 
 @Component({
   selector: 'app-footer',

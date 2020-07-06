@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
     declarations: [
                   ],
@@ -13,13 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
         MatTabsModule,
         MatIconModule,
         MatInputModule,
+        MatSlideToggleModule
     ],
     exports: [ 
                MatButtonModule,
                MatFormFieldModule,
                MatTabsModule,
                MatIconModule,
-               MatInputModule
+               MatInputModule,
+               MatSlideToggleModule
              ],
 })
 export class SharedModule {}

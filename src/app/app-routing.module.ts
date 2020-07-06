@@ -1,4 +1,4 @@
-import  { Routes, RouterModule } from '@angular/router';
+import  { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from 'src/components/home/home.component';
 import { NgModule } from '@angular/core';
 import { AuthComponent } from 'src/components/auth/auth.component';
@@ -9,6 +9,9 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent, data: { animation: 'HomePage' } },
     { path: 'auth', component: AuthComponent, data: { animation: 'AuthPage' } },
     { path: 'contact', component: ContactComponent },
+    { path: 'profile', 
+      loadChildren: () => import("../components/profile/profile.module").then((m) => m.ProfileModule),
+    }
 ]
 
 @NgModule({

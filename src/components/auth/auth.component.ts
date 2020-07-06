@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Constants } from 'src/providers/constants.services';
+import { Constants } from 'src/providers/constants.service';
+import { Router } from '@angular/router';
+import { UserContextProvider } from 'src/providers/user-context.service';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +15,9 @@ export class AuthComponent implements OnInit {
   loginForm: any;
   hide: boolean = true;
   ICON_BASE = Constants.ICON_BASE;
-  constructor() { }
+  constructor( private router: Router,
+               private userContextProvider: UserContextProvider,
+               ) { }
 
   ngOnInit(): void {
     this.createSignupForm();
@@ -38,6 +42,13 @@ export class AuthComponent implements OnInit {
 
   submitLoginForm() {
     console.log(this.loginForm);
+  }
+
+  testProfile() {
+    console.log("Testing profile")
+    this.userContextProvider.setLoginStatus(true);
+    this.userContextProvider.loginStatus.next({ status: true });
+    this.router.navigate(['profile']);
   }
 
 }

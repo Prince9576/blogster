@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Constants } from 'src/providers/constants.services';
+import { Constants } from 'src/providers/constants.service';
 import { SharedModule } from './shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from 'src/components/header/header.component';
@@ -12,8 +12,10 @@ import { HomeComponent } from 'src/components/home/home.component';
 import { AuthComponent } from '../components/auth/auth.component';
 import { ContactComponent } from '../components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DeviceInfoProvider } from 'src/providers/device-info.services';
+import { DeviceInfoProvider } from 'src/providers/device-info.service';
 import { SocialLinksComponent } from '../components/social-links/social-links.component';
+import { ProfileModule } from 'src/components/profile/profile.module';
+import { UserContextProvider } from 'src/providers/user-context.service';
 
 
 @NgModule({
@@ -33,8 +35,9 @@ import { SocialLinksComponent } from '../components/social-links/social-links.co
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    ProfileModule,
   ],
-  providers: [ Constants, DeviceInfoProvider ],
+  providers: [ Constants, DeviceInfoProvider, UserContextProvider ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

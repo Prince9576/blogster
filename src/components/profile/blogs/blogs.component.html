@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="blogs-wrapper">
+        <div class="row">
+            <mat-slide-toggle (input)= "sliderChanged()">Show only my blogs!</mat-slide-toggle>
+        </div>
+        <div class="blogs">
+            <div class="blog" *ngFor= "let blog of blogs">
+                <div class="blog_title">
+                    {{ blog.title }}
+                </div>
+                <hr>
+                <div class="blog_body">
+                    {{ blog.body }}
+                </div>
+                <hr>
+                <div class="blog_footer row">
+                    <div class="col-sm-2 icon-wrapper">
+                        <i class="fas fa-thumbs-up like"></i>
+                        <span>{{ blog.like }}</span>
+                    </div>
+                    <div class="col-sm-1 icon-wrapper">
+                        <i class="fas fa-heart love"></i>
+                        <span>{{ blog.love }}</span>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="blog_footer_author">
+                            by {{ blog.author }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
