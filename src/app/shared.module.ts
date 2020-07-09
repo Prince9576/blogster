@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
     declarations: [
                   ],
@@ -14,7 +15,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
         MatTabsModule,
         MatIconModule,
         MatInputModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatDialogModule
     ],
     exports: [ 
                MatButtonModule,
@@ -22,7 +24,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
                MatTabsModule,
                MatIconModule,
                MatInputModule,
-               MatSlideToggleModule
+               MatSlideToggleModule,
+               MatDialogModule
              ],
 })
 export class SharedModule {}

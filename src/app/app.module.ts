@@ -16,6 +16,7 @@ import { DeviceInfoProvider } from 'src/providers/device-info.service';
 import { SocialLinksComponent } from '../components/social-links/social-links.component';
 import { ProfileModule } from 'src/components/profile/profile.module';
 import { UserContextProvider } from 'src/providers/user-context.service';
+import { DataService } from 'src/providers/data.service';
 
 
 @NgModule({
@@ -37,7 +38,10 @@ import { UserContextProvider } from 'src/providers/user-context.service';
     AppRoutingModule,
     ProfileModule,
   ],
-  providers: [ Constants, DeviceInfoProvider, UserContextProvider ],
+  providers: [ Constants, 
+               DeviceInfoProvider, 
+               UserContextProvider,
+               DataService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

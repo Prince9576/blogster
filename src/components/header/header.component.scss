@@ -4,24 +4,46 @@
     color: var(--color-primary-white);
     font-size: 1.3rem;
     a {
+        padding: 0.75rem 2rem 0.75rem 1rem;
+        position: relative;
         color: var(--color-primary-white);
-        padding-left: 1rem;
-        padding-right: 2rem;
         &:hover {
-            background-color: var(--color-primary-white);
-            color: var(--color-primary-blue);
-            transition: all cubic-bezier(1, 0, 0, 1) 0.35s;
+            color: var(--color-primary-white); // Override bootstrap hover
+        }
+        &:after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 0%;
+            content: '.';
+            color: transparent;
+            background: var(--color-primary-white);
+            height: 1px;
+        }
+        &:hover:after {
+            transition: all cubic-bezier(0.7, 0, 0, 1) 1s;
+            width: 100%;
         }
     }
 }
-.navbar-brand {
-    i {
-        font-size: 1.9rem;
-    }
+.navbar {
+    padding: 0.85rem !important;
+}
+.brand {
+    font-size: 2.3rem;
+    margin-left: 1rem !important;
+    color: var(--color-primary-orange);
 }
 .active {
     background-color: var(--color-primary-white);
-    color: var(--color-primary-blue) !important;
+    color: #000 !important;
+    transition: all 1s;
+    border-radius: 2px;
+    i {
+        color: var(--color-primary-blue);
+    }
 }
 
 // For toggler to be white

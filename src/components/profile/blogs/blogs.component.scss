@@ -27,6 +27,14 @@
                     letter-spacing: 1px;
                 }
 
+                &_body {
+                    .view-more {
+                        text-decoration: underline;
+                        color: dodgerblue;
+                        cursor: pointer;
+                    }
+                }
+
                 &_footer {
                     i {
                         font-size: 1.3rem;

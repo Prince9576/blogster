@@ -10,8 +10,12 @@
                 </div>
                 <hr>
                 <div class="blog_body">
-                    {{ blog.body | shorten: 100 }}
-                    <span>View More</span>
+                    {{ blog.body | shorten: alphabetCount }}
+                    <span class="view-more" (click)= "viewMore(blog)"
+                    *ngIf= "blog.body.length > alphabetCount">
+                        VIEW MORE
+                        <i class="fas fa-angle-double-right"></i>
+                    </span>
                 </div>
                 <hr>
                 <div class="blog_footer row">
