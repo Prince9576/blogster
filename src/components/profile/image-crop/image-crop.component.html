@@ -1,0 +1,45 @@
+<div class="image-cropper-wrapper">
+    <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1 / 1"
+        [canvasRotation]="canvasRotation"
+        [transform]="transform"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+    ></image-cropper>
+    <div class="image-wrapper-options">
+        <button mat-raised-button class= "crop-btn" (click)= "rotateLeft()">
+            <i class="fas fa-undo"></i>
+            <span>Rotate Left</span>
+        </button>
+        <button mat-raised-button class= "crop-btn" (click)= "rotateRight()">
+            <i class="fas fa-undo fa-rotate-180"></i>
+            <span>Rotate Right</span>
+        </button>
+        <button mat-raised-button class= "crop-btn" (click)= "flipHorizontal()">
+            <i class="fas fa-arrows-alt-h"></i>
+            <span>Flip Horizontal</span>
+        </button>
+        <button mat-raised-button class= "crop-btn" (click)= "flipVertical()">
+            <i class="fas fa-arrows-alt-v"></i>
+            <span>Flip Vertical</span>
+        </button>
+        <button mat-raised-button class= "crop-btn"(click)= "zoomIn()">
+            <i class="fas fa-search-plus"></i>
+            <span>Zoom In</span>
+        </button>
+        <button mat-raised-button class= "crop-btn" (click)= "zoomOut()">
+            <i class="fas fa-search-minus"></i>
+            <span>Zoom Out</span>
+        </button>
+        <button mat-raised-button class= "crop-btn" (click)= "resetImage()">
+            <i class="fas fa-cog"></i>
+            <span>Reset</span>
+        </button>
+        <button mat-raised-button class= "crop-btn" (click)= "cropAndReturnImage()">
+            <i class="fas fa-crop-alt"></i>
+            <span>Crop</span>
+        </button>
+    </div>
+</div>

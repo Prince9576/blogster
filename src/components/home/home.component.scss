@@ -48,11 +48,18 @@ p {
 @media only screen
 and (max-width: 450px)
 and (orientation: portrait) {
-    .landing_heading { 
-        margin: 1rem 0 2rem 0;
+    .home-wrapper {
+        text-align: center;
 
-        &--text {
-            font-size: 4.2rem !important;
+        .landing_para {
+            width: 100%;
         }
-    }    
+        .landing_heading { 
+            margin: 1rem 0 2rem 0;
+    
+            &--text {
+                font-size: 4.2rem !important;
+            }
+        }    
+    }
 }

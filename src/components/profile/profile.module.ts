@@ -11,6 +11,9 @@ import { ShortenPipe } from 'src/pipes/shorten.pipe';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogComponent } from './blog/blog.component';
+import { ImageCropComponent } from './image-crop/image-crop.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 
 const routes: Routes = [
     { path: '', component: ProfileComponent }
@@ -23,7 +26,8 @@ const routes: Routes = [
         BlogsComponent,
         PostComponent,
         ShortenPipe,
-        BlogComponent
+        BlogComponent,
+        ImageCropComponent
     ],
     imports: [ 
                CommonModule,
@@ -31,7 +35,8 @@ const routes: Routes = [
                RouterModule.forChild(routes),
                CKEditorModule,
                FormsModule,
-               ReactiveFormsModule
+               ReactiveFormsModule,
+               ImageCropperModule
              ],
     exports: []
 })

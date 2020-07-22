@@ -1,0 +1,9 @@
+$breakpoint: (
+    'phone': 500px
+) !default;
+
+@mixin response($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        @content;
+    }
+}

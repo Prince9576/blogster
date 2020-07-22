@@ -18,7 +18,7 @@
     }
 
     .profile-picture {
-        padding: 8px;
+        padding: 4px;
         background-color: #fff;
         height: 11rem;
         width: 11rem;
@@ -28,13 +28,59 @@
         left: 5%;
         box-shadow: 0 4px 7px #e6e6e6;
         transform: translateY(0.5rem);
+        overflow: hidden;
 
         img {
             height: 100%;
             border-radius: 50%;
             width: 100%;
         }
+
+        .dp-overlay-wrapper {
+            .dp-overlay {
+                position: absolute;
+                height: 11rem;
+                width: 12rem;
+                background-color: black;
+                opacity: 0.5;
+                top: 0;
+                left: -1rem;
+            }
+            .dp-options {
+                position: absolute;
+                top: 65%;
+                color: #fff;
+                text-decoration: underline;
+                text-align: center;
+                left: 50%;
+                width: 100%;
+                transform: translate(-50%, -50%);
+                font-weight: 500;
+                cursor: pointer;
+    
+                & div:first-child {
+                    margin-bottom: 3px;
+                }
+            }
+            .fake-file-upload {
+                opacity: 0;
+                height: 1px;
+            }
+        }
+
+        .dp-overlay-wrapper:not(:hover) {
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        .dp-overlay-wrapper:hover {
+            opacity: 1;
+            transition: all 0.3s;
+        }
     }
+}
+
+.dp-fullview {
+    max-height: 40rem;
 }
 
 .details-wrapper {
@@ -58,5 +104,6 @@ and (orientation: portrait) {
     .container-fluid {
         width: 100%;
         padding: 0;
+        margin-top: 3rem;
     }
 }   

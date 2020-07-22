@@ -10,7 +10,16 @@
             </div>
         </div>
         <div class="profile-picture">
-            <img src="https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg" class="img-fluid">
+            <img [src]="profilePicturePath" class="img-fluid">
+            <div class="dp-overlay-wrapper">
+                <div class="dp-overlay">
+                </div>
+                <div class="dp-options">
+                    <div (click)= "profileUpload.click()">Upload Picture</div>
+                    <div (click)= "showFullView(fullPicView)">View Picture</div>
+                </div>
+                <input class = "fake-file-upload" type="file" #profileUpload (change)= "fileUploaded($event)">
+            </div>
         </div>
     </div>
     <div class="details-wrapper">
@@ -27,3 +36,8 @@
         </div>
     </div>
 </div>
+
+<!--PROFILE PICTURE FULL VIEW-->
+<ng-template #fullPicView>
+    <img src="https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg" class="dp-fullview img-fluid">
+</ng-template>
