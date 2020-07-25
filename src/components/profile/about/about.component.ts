@@ -7,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  profileInfo: any;
+  profileInfo: any = {
+    name: "Prine Kumar",
+    dob: Date.now(),
+    hometown: "Jharkhand",
+    residence: "Bangalore",
+    graduation: "Btech",
+    occupation: "Software developer",
+    company: "Openstream",
+    martialStatus: "Single",
+  };
   constructor(  ) { }
 
   ngOnInit(): void {

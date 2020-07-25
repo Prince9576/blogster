@@ -24,6 +24,7 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
   ICON_BASE: string = Constants.ICON_BASE;
   activeTabIndex: number = 0;
   signupSub: Subscription;
+  loginSub: Subscription;
   signupLoader: boolean;
   loginLoader: boolean;
   constructor( private router: Router,
@@ -35,23 +36,17 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.createSignupForm();
     this.createLoginForm();
-    this.signupSub = this.authService.signupStatus.subscribe((resp: { status: boolean, response: any} ) => {
+    this.signupSub = this.authService.signupStatusEmitter.subscribe((resp: { status: boolean, response: any} ) => {
       console.log("Resp", resp);
       if ( resp.status ) {
-        this.signupLoader = false;
-        this.signupForm.reset();
-        this.signupFormRef.resetForm();
-        const dialogRef = this.dialog.open(GenericMessageComponent, {
-          width: window.innerWidth > 500 ? '20%' : '80%',
-          height: window.innerWidth > 500 ? '40%' : '35%',
-          data: {
-            type: "Success",
-            body: resp.response.message,
-          }
-        });
-        dialogRef.afterClosed().subscribe(() => {
-          this.tab.selectedIndex = 0;
-        })
+        this.completePostSignupRituals(resp);
+      }
+    });
+
+    this.loginSub = this.authService.loginStatusEmitter.subscribe((resp: { status: boolean, response: any}) => {
+      this.loginLoader = false;
+      if ( resp.status ) {
+        this.router.navigate(['profile']);
       }
     })
   }
@@ -78,10 +73,6 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
       email: new FormControl('', [ Validators.required, Validators.email, Validators.maxLength(250)] ),
       password: new FormControl('', [ Validators.required, Validators.minLength(6), Validators.maxLength(100) ]),
     })
-  }
-
-  submitLoginForm() {
-    console.log(this.loginForm);
   }
 
   testProfile() {
@@ -113,6 +104,28 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
   submitSignupForm() {
     this.signupLoader = true;
     this.authService.signup(this.signupForm.value);
+  }
+
+  submitLoginForm() {
+    this.loginLoader = true;
+    this.authService.login(this.loginForm.value);
+  }
+
+  completePostSignupRituals(resp: any) {
+    this.signupLoader = false;
+    this.signupForm.reset();
+    this.signupFormRef.resetForm();
+    const dialogRef = this.dialog.open(GenericMessageComponent, {
+      width: window.innerWidth > 500 ? '20%' : '80%',
+      height: window.innerWidth > 500 ? '40%' : '35%',
+      data: {
+        type: "Success",
+        body: resp.response.message,
+      }
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.tab.selectedIndex = 0;
+    })
   }
 
 }

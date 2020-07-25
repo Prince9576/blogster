@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animations';
 import { UserContextProvider } from 'src/providers/user-context.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/providers/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,21 +17,23 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'Blogster';
   ICON_BASE = Constants.ICON_BASE;
-  loginSubscription: Subscription;
-  isLoggedIn: boolean = false;
+  loginSub: Subscription;
+  isAuthenticated: boolean = false;
 
-  constructor( private userContextProvider: UserContextProvider ) {
+  constructor( private authService: AuthService ) {
   }
 
   ngOnInit(): void {
-    this.loginSubscription = this.userContextProvider.loginStatus.subscribe((data: { status: boolean }) => {
+    this.authService.autoLogin();
+    this.isAuthenticated = this.authService.isAuthenticated;
+    this.loginSub = this.authService.loginStatusEmitter.subscribe((data: { status: boolean, response: any }) => {
       console.log("Logined", data);
-      this.isLoggedIn = data.status;
+      this.isAuthenticated = data.status;
     })
   }
 
   ngOnDestroy() {
-    this.loginSubscription.unsubscribe();
+    this.loginSub.unsubscribe();
   }
 
   prepareRoute(outlet: RouterOutlet) {

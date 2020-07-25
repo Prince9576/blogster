@@ -1,10 +1,10 @@
 <app-header></app-header>
 <div class="container-fluid">
-  <ng-container *ngIf= "isLoggedIn">
+  <ng-container *ngIf= "isAuthenticated">
     <router-outlet></router-outlet>
   </ng-container>
 
-  <ng-container *ngIf= "!isLoggedIn">
+  <ng-container *ngIf= "!isAuthenticated">
     <div class="row">
       <div class="col-sm">
         <img class="img-fluid" src="{{ICON_BASE}}human-with-laptop.jpg">
