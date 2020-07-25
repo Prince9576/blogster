@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogComponent } from './blog/blog.component';
 import { ImageCropComponent } from './image-crop/image-crop.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
         PostComponent,
         ShortenPipe,
         BlogComponent,
-        ImageCropComponent
+        ImageCropComponent,
+        UpdateProfileComponent
     ],
     imports: [ 
                CommonModule,

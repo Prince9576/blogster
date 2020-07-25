@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  profileInfo: any;
+  constructor(  ) { }
 
   ngOnInit(): void {
+    console.log("Profile Info", this.profileInfo);
   }
 
 }

@@ -7,8 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
-    declarations: [
-                  ],
+    declarations: [ ],
     imports: [
         MatButtonModule,
         MatFormFieldModule,
@@ -25,7 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
                MatIconModule,
                MatInputModule,
                MatSlideToggleModule,
-               MatDialogModule
+               MatDialogModule,
              ],
 })
 export class SharedModule {}

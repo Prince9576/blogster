@@ -1,7 +1,10 @@
 
 <div class="auth-wrapper">
-    <mat-tab-group>
+    <mat-tab-group #tab (selectedTabChange)="tabChanged($event)">
         <mat-tab label="Login">
+            <div class="loader-wrapper" *ngIf= "loginLoader">
+                <img class="loader" src="{{ICON_BASE}}loader.svg" alt = "loader">
+            </div>
             <div class="login-logo">
                 <img class = "login-logo_image" src="{{ICON_BASE}}user-login.svg">
                 <div class="credit">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
@@ -9,11 +12,12 @@
                 </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             </div>
             <div class="form-content-wrapper login-content">
-                <form [formGroup]= "loginForm" (ngSubmit)= "submitLoginForm()" class="mt-2">
-                    <div class="control">
+                <form #loginFormRef= "ngForm" [formGroup]= "loginForm" (ngSubmit)= "submitLoginForm()" class="mt-2">
+                    <div class="control mb-2">
                         <mat-form-field appearance="fill">
                             <mat-label>Enter your email</mat-label>
                             <input formControlName= "email" matInput>
+                            <mat-error>{{ getErrorMessage('email') }}</mat-error>
                         </mat-form-field>
                     </div>
                     
@@ -21,9 +25,10 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Enter your password</mat-label>
                             <input formControlName= "password" matInput [type]="hide ? 'password' : 'text'">
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <button type="button" role="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
+                            <mat-error>{{ getErrorMessage('password') }}</mat-error>
                         </mat-form-field>
                     </div>
 
@@ -34,42 +39,41 @@
             </div>
         </mat-tab>
         <mat-tab label="Signup"> 
+            <div class="loader-wrapper" *ngIf= "signupLoader">
+                <img class="loader" src="{{ICON_BASE}}loader.svg" alt = "loader">
+            </div>
             <div class="form-content-wrapper">
-                <form [formGroup]= "signupForm" (ngSubmit)= "submitLoginForm()">
+                <form #signupFormRef= "ngForm" [formGroup]= "signupForm" (ngSubmit)= "submitSignupForm()">
 
-                    <div class="control">
+                    <div class="control mb-2">
                         <mat-form-field appearance="fill">
                             <mat-label>Enter your name</mat-label>
                             <input formControlName= "name" matInput>
+                            <mat-error>{{ getErrorMessage('name') }}</mat-error>
                         </mat-form-field>
                     </div>
 
-                    <div class="control">
+                    <div class="control mb-2">
                         <mat-form-field appearance="fill">
                             <mat-label>Enter your email</mat-label>
                             <input formControlName= "email" matInput>
+                            <mat-error>{{ getErrorMessage('email') }}</mat-error>
                         </mat-form-field>
                     </div>
                     
-                    <div class="control">
+                    <div class="control mb-2">
                         <mat-form-field appearance="fill">
                             <mat-label>Enter your password</mat-label>
                             <input formControlName= "password" matInput [type]="hide ? 'password' : 'text'">
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <button type="button" role="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                        </mat-form-field>
-                    </div>
-
-                    <div class="control">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Enter your number</mat-label>
-                            <input formControlName= "phone" matInput>
+                            <mat-error>{{ getErrorMessage('password') }}</mat-error>
                         </mat-form-field>
                     </div>
 
                     <div class="fomr-btn">
-                        <button mat-raised-button type="submit">Signup</button>
+                        <button mat-raised-button type="submit" [disabled]= "signupForm.invalid">Signup</button>
                     </div>
                 </form>
             </div>

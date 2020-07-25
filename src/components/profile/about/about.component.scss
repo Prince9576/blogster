@@ -1,4 +1,6 @@
-
+.card-container {
+    // overflow-y: scroll !important;
+}
 .about-title {
     font-size: 1.6rem;
     font-weight: 900;
@@ -27,13 +29,26 @@
     }
 }
 .about-wrapper {
-    padding: 1rem 2.5rem;
+    padding: 2rem 2.5rem 1px 2.5rem;
     font-size: 1.2rem;
     padding-top: 2rem;
+}
+.profile-edit {
+    padding: 0.2rem 2.5rem;
+    font-size: 1.2rem;
+    color: dodgerblue;
+    cursor: pointer;
+    i {
+        margin-right: 5px;
+    }
+    span {
+        text-decoration: underline;
+    }
 }
 
 .bold {
     font-weight: 700;
+    word-break: break-all;
 }
 
 .row {

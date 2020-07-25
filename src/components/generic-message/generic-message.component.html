@@ -1,0 +1,15 @@
+<div class="generic-info-wrapper">
+    <div class="icon-wrapper">
+        <i class="fas fa-times-circle" *ngIf= "type === 'Error'"></i>
+        <i class="fas fa-check-circle" *ngIf= "type !== 'Error'"></i>
+    </div>
+    <div class="header-wrapper">
+        <p>{{ header }}</p>
+    </div>
+    <div class="body-wrapper">
+        <p>{{ body }}</p>
+    </div>
+    <div class="button-wrapper">
+        <button class= "dlg-btn" mat-button mat-dialog-close>Okay</button>
+    </div>
+</div>

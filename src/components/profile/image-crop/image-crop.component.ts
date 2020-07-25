@@ -75,7 +75,7 @@ export class ImageCropComponent implements OnInit {
   cropAndReturnImage() {
     this.dialogRef.close(this.base64Data);
   }
- 
+
   private flipAfterRotate() {
     const flippedH = this.transform.flipH;
     const flippedV = this.transform.flipV;

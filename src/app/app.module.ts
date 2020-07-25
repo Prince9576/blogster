@@ -17,6 +17,9 @@ import { SocialLinksComponent } from '../components/social-links/social-links.co
 import { ProfileModule } from 'src/components/profile/profile.module';
 import { UserContextProvider } from 'src/providers/user-context.service';
 import { DataService } from 'src/providers/data.service';
+import { GenericMessageComponent } from '../components/generic-message/generic-message.component';
+import { AuthService } from 'src/providers/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,11 +31,13 @@ import { DataService } from 'src/providers/data.service';
     AuthComponent,
     ContactComponent,
     SocialLinksComponent,
+    GenericMessageComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -41,7 +46,8 @@ import { DataService } from 'src/providers/data.service';
   providers: [ Constants, 
                DeviceInfoProvider, 
                UserContextProvider,
-               DataService ],
+               DataService,
+               AuthService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

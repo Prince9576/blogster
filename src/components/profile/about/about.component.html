@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-10">
                 <div class="detail">
-                    <span class="bold">Prince Kumar</span>
+                    <span class="bold">{{ profileInfo.name }}</span>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="col-sm-10">
                 <div class="detail">
                     <div class="bold">Born on</div>
-                    <div>September 27th, 1997</div>
+                    <div>{{ profileInfo.dob | date }}</div>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="col-sm-10">
                 <div class="detail">
                     <div class="bold">From </div>
-                    <div>Jharkhand, India</div>
+                    <div>{{ profileInfo.hometown }}</div>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
            <div class="col-sm-10">
             <div class="detail">
                 <div class="bold">Currently in </div>
-                <div>Bangalore, India</div>
+                <div>{{ profileInfo.residence }}</div>
             </div>
            </div>
         </div>
@@ -57,7 +57,7 @@
             <div class="col-sm-10">
                 <div class="detail">
                     <div class="bold">Studied </div>
-                    <div>Bachelor of technology</div>
+                    <div>{{ profileInfo.graduation }}</div>
                 </div>
             </div>
         </div>
@@ -67,8 +67,8 @@
             </div>
             <div class="col-sm-10">
                 <div class="detail">
-                    <div class="bold">Works at</div>
-                    <div>Openstream Technologies</div>
+                    <div class="bold">{{ profileInfo.occupation }} at</div>
+                    <div>{{ profileInfo.company }}</div>
                 </div>
             </div>  
         </div>
@@ -79,9 +79,14 @@
             <div class="col-sm-10">
                 <div class="detail">
                     <div class="bold"> Relationship Status </div>
-                    <div>Single</div>
+                    <div>{{ profileInfo.martialStatus }}</div>
                 </div>
             </div>
         </div>
+    </div>
+    <hr style="margin-top: 5px;">
+    <div class="profile-edit">
+        <i class="far fa-edit"></i>
+        <span>Edit</span>
     </div>
 </div>
