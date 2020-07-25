@@ -6,6 +6,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
     declarations: [ ],
     imports: [
@@ -15,7 +16,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatIconModule,
         MatInputModule,
         MatSlideToggleModule,
-        MatDialogModule
+        MatDialogModule,
+        MatDividerModule
     ],
     exports: [ 
                MatButtonModule,
@@ -25,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
                MatInputModule,
                MatSlideToggleModule,
                MatDialogModule,
+               MatDividerModule
              ],
 })
 export class SharedModule {}

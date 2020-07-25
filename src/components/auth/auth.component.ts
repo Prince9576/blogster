@@ -18,6 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('tab') tab: any;
   @ViewChild('signupFormRef', { static: false }) signupFormRef: NgForm;
+  @ViewChild('loginFormRef', { static: false }) loginFormRef: NgForm;
   signupForm: FormGroup;
   loginForm: FormGroup;
   hide: boolean = true;
@@ -44,10 +45,7 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     this.loginSub = this.authService.loginStatusEmitter.subscribe((resp: { status: boolean, response: any}) => {
-      this.loginLoader = false;
-      if ( resp.status ) {
-        this.router.navigate(['profile']);
-      }
+      this.completePostLoginRituals(resp);
     })
   }
 
@@ -126,6 +124,15 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
     dialogRef.afterClosed().subscribe(() => {
       this.tab.selectedIndex = 0;
     })
+  }
+
+  completePostLoginRituals(resp: any) {
+    this.loginLoader = false;
+    this.loginForm.reset();
+    this.loginFormRef.resetForm();
+      if ( resp.status ) {
+        this.router.navigate(['profile']);
+      }
   }
 
 }

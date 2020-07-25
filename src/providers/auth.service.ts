@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +14,7 @@ export class AuthService {
     userId: string;
     isAuthenticated: boolean;
     expireTimeout: any;
-    constructor( private http: HttpClient ) {}
+    constructor( private http: HttpClient, private router: Router ) {}
 
     signup(signupData: { name: string, email: string, password: string }) {
         this.http.post<any>(this.BASE_URL + "users/signup", signupData)
@@ -65,6 +66,7 @@ export class AuthService {
             status: false,
             reponse: null,
         });
+        this.router.navigate(['']);
         this.logoutStatusEmitter.next(true);
         clearTimeout(this.expireTimeout);
     }

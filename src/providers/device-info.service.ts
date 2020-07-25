@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DeviceInfoProvider {
 
-    device_sm: number = 450;
+    device_sm: number = 500;
     constructor() {}
 
     isMobileDevice() {

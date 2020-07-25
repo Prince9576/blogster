@@ -20,6 +20,7 @@ import { DataService } from 'src/providers/data.service';
 import { GenericMessageComponent } from '../components/generic-message/generic-message.component';
 import { AuthService } from 'src/providers/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from '../components/not-found/not-found.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     ContactComponent,
     SocialLinksComponent,
     GenericMessageComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

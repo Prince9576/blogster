@@ -1,0 +1,27 @@
+<div class="not-found-wrapper row">
+    <div class="col-md-6">
+        <img src="{{ICON_BASE}}404.svg" class="img-fluid not-found-image">
+    </div>
+    <div class="col-md-6">
+        <div class="not-found-info">
+            <div class="heading">
+                <div class="code" *ngIf= "!isMobile">
+                    <span>4</span><span><i class="fas fa-ban fa-spin"></i></span><span>4</span>
+                </div>
+                <div class="text">
+                    {{ isMobile ? 'Oops ! ' : ':'}} Page Not Found
+                </div>
+            </div>
+            <div class="body">
+                Uh Oh! You do not belong here.
+                <br>
+                And it's not safe, Kindly go back to the place where you came from !
+            </div>
+            <mat-divider></mat-divider>
+            <button mat-button (click)= "returnHome()"> 
+                <i class="fas fa-broom"></i>
+                <span>Return home</span>
+            </button>
+        </div>
+    </div>
+</div>

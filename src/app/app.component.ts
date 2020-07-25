@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Constants } from 'src/providers/constants.service';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationStart } from '@angular/router';
 import { slideInAnimation } from './animations';
-import { UserContextProvider } from 'src/providers/user-context.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/providers/auth.service';
+import { filter } from 'rxjs/operators';
+import { routes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +20,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ICON_BASE = Constants.ICON_BASE;
   loginSub: Subscription;
   isAuthenticated: boolean = false;
+  pageNotFound: boolean;
 
-  constructor( private authService: AuthService ) {
+  constructor( private authService: AuthService, private router: Router ) {
   }
 
   ngOnInit(): void {
@@ -29,6 +31,29 @@ export class AppComponent implements OnInit, OnDestroy {
     this.loginSub = this.authService.loginStatusEmitter.subscribe((data: { status: boolean, response: any }) => {
       console.log("Logined", data);
       this.isAuthenticated = data.status;
+    })
+
+    console.log(routes);
+    this.router.events.pipe(
+      filter((data) => data instanceof NavigationStart )
+    ).subscribe((data: NavigationStart) => {
+     this.pageNotFound = false;
+     if ( data.url === "**") {
+       this.pageNotFound = true;
+     } else {
+       let count = 0;
+       routes.forEach((route: any) => {
+        console.log(data.url.substring(1), "   ", route.path);
+        if ( data.url.substring(1) === route.path ) {
+          count++;
+        }
+       })
+       console.log("Count ",count);
+       if ( count === 0 ) {
+         this.pageNotFound = true;
+       }
+     }
+     console.log("Page not found", this.pageNotFound);
     })
   }
 
