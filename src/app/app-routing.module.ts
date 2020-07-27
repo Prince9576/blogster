@@ -1,20 +1,16 @@
 import  { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { HomeComponent } from 'src/components/home/home.component';
 import { NgModule } from '@angular/core';
-import { AuthComponent } from 'src/components/auth/auth.component';
-import { ContactComponent } from 'src/components/contact/contact.component';
 import { ProfileGuard } from 'src/guards/profile.guard';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { NotFoundComponent } from 'src/components/not-found/not-found.component';
+import { ProfileResolver } from 'src/providers/profile.resolver';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full'},
-    { path: 'home', component: HomeComponent, data: { animation: 'HomePage' }, canActivate: [ AuthGuard] },
-    { path: 'auth', component: AuthComponent, data: { animation: 'AuthPage' }, canActivate: [ AuthGuard ] },
-    { path: 'contact', component: ContactComponent, canActivate: [ AuthGuard ] },
-    { path: 'profile', 
+    { path: '', loadChildren: () => import("../components/prelogin/prelogin.module").then((m) => m.PreloginModule)},
+    { path: 'profile/:id', 
       loadChildren: () => import("../components/profile/profile.module").then((m) => m.ProfileModule),
-      canActivate: [ ProfileGuard ]
+      canActivate: [ ProfileGuard ],
+      resolve: { profileData: ProfileResolver }
     },
     {path: '**', component: NotFoundComponent}
 ]
@@ -22,7 +18,7 @@ export const routes: Routes = [
 @NgModule({
     imports: [ RouterModule.forRoot(routes) ],
     exports: [ RouterModule ],
-    providers: [ ProfileGuard, AuthGuard ]
+    providers: [ ProfileGuard, AuthGuard, ProfileResolver ]
 })
 
 export class AppRoutingModule {}

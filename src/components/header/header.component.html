@@ -7,19 +7,19 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mr-3" *ngIf= "!isAuthenticated">
-          <a class="nav-link" routerLink= "/home" routerLinkActive= "active" >
+          <a class="nav-link" [routerLink]= "['']" [ngClass]= "{ 'active': routePath === '/' }" >
             <i class="fas fa-home mr-2"></i>
             <span>Home</span>
           </a>
         </li>
         <li class="nav-item mr-3" *ngIf= "!isAuthenticated">
-          <a class="nav-link" routerLink= "/auth" routerLinkActive= "active">
+          <a class="nav-link" [routerLink]= "['auth']" routerLinkActive= "active">
             <i class="fas fa-sign-in-alt mr-2"></i>
             <span>Login</span>
           </a>
         </li>
         <li class="nav-item mr-3" *ngIf= "!isAuthenticated">
-          <a class="nav-link" routerLink= "/contact" routerLinkActive= "active">
+          <a class="nav-link" [routerLink]= "['contact']" routerLinkActive= "active">
             <i class="fas fa-phone-alt mr-2"></i>
             <span>Contact</span>
           </a>

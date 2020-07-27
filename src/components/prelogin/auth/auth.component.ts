@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Constants } from 'src/providers/constants.service';
 import { Router } from '@angular/router';
@@ -6,7 +6,7 @@ import { UserContextProvider } from 'src/providers/user-context.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { AuthService } from 'src/providers/auth.service';
 import { Subscription } from 'rxjs';
-import { GenericMessageComponent } from '../generic-message/generic-message.component';
+import { GenericMessageComponent } from '../../generic-message/generic-message.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -131,7 +131,8 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loginForm.reset();
     this.loginFormRef.resetForm();
       if ( resp.status ) {
-        this.router.navigate(['profile']);
+        console.log("User id before navigating", this.authService.userId);
+        this.router.navigate(['profile', this.authService.userId]);
       }
   }
 

@@ -7,8 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { SocialLinksComponent } from 'src/components/social-links/social-links.component';
 @NgModule({
-    declarations: [ ],
+    declarations: [ SocialLinksComponent ],
     imports: [
         MatButtonModule,
         MatFormFieldModule,
@@ -17,7 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
         MatInputModule,
         MatSlideToggleModule,
         MatDialogModule,
-        MatDividerModule
+        MatDividerModule,
     ],
     exports: [ 
                MatButtonModule,
@@ -27,7 +28,8 @@ import { MatDividerModule } from '@angular/material/divider';
                MatInputModule,
                MatSlideToggleModule,
                MatDialogModule,
-               MatDividerModule
+               MatDividerModule,
+               SocialLinksComponent
              ],
 })
 export class SharedModule {}

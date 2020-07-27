@@ -37,14 +37,14 @@ export class AuthService {
         this.http.post<any>(this.BASE_URL + "users/login", loginData)
         .subscribe((response: any) => {
             console.log("Login Response", response);
-            this.loginStatusEmitter.next({
-                status: true,
-                response
-            })
             this.isAuthenticated = true;
             this.token = response.token;
             this.userId = response.userId;
             this.cacheLoginData(response.token, response.userId);
+            this.loginStatusEmitter.next({
+                status: true,
+                response
+            })
             this.expireTimeout = setTimeout(() => {
                 this.logout();
             }, response.expiresIn * 3600)

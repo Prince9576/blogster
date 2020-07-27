@@ -3,6 +3,9 @@ import { Constants } from 'src/providers/constants.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageCropComponent } from './image-crop/image-crop.component';
 import { GenericMessageComponent } from '../generic-message/generic-message.component';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ProfileInfoProvider } from 'src/providers/profile-info.service';
+import { User } from 'src/models/user.model';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,10 +16,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
   profilePicturePath: any = "https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg";
   uploadErrorTitle: "File Upload Error";
   uploadErrorMessage: string;
-  constructor( private dialog: MatDialog ) { }
+  userId: string;
+  userInfo: User;
+  constructor( private dialog: MatDialog, private route: ActivatedRoute, private profileInfoProvider: ProfileInfoProvider ) { }
 
   ngOnInit(): void {
-  
+   this.route.data.subscribe((data: any) => {
+     if ( data && data.profileData && data.profileData.status === "S" ) {
+       this.userInfo = data.profileData.response;
+     }
+     console.log("User Info", this.userInfo);
+   })
   }
 
   ngOnDestroy() {

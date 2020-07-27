@@ -8,12 +8,8 @@ import { SharedModule } from './shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from 'src/components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
-import { HomeComponent } from 'src/components/home/home.component';
-import { AuthComponent } from '../components/auth/auth.component';
-import { ContactComponent } from '../components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeviceInfoProvider } from 'src/providers/device-info.service';
-import { SocialLinksComponent } from '../components/social-links/social-links.component';
 import { ProfileModule } from 'src/components/profile/profile.module';
 import { UserContextProvider } from 'src/providers/user-context.service';
 import { DataService } from 'src/providers/data.service';
@@ -21,6 +17,8 @@ import { GenericMessageComponent } from '../components/generic-message/generic-m
 import { AuthService } from 'src/providers/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from '../components/not-found/not-found.component';
+import { ProfileInfoProvider } from 'src/providers/profile-info.service';
+import { PreloginComponent } from '../components/prelogin/prelogin.component';
 
 
 @NgModule({
@@ -28,12 +26,9 @@ import { NotFoundComponent } from '../components/not-found/not-found.component';
     AppComponent,
     HeaderComponent, 
     FooterComponent, 
-    HomeComponent,
-    AuthComponent,
-    ContactComponent,
-    SocialLinksComponent,
     GenericMessageComponent,
     NotFoundComponent,
+    PreloginComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +44,8 @@ import { NotFoundComponent } from '../components/not-found/not-found.component';
                DeviceInfoProvider, 
                UserContextProvider,
                DataService,
-               AuthService ],
+               AuthService,
+               ProfileInfoProvider ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

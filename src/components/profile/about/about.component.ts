@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from 'src/models/user.model';
 
 @Component({
   selector: 'app-about',
@@ -6,17 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-
-  profileInfo: any = {
-    name: "Prine Kumar",
-    dob: Date.now(),
-    hometown: "Jharkhand",
-    residence: "Bangalore",
-    graduation: "Btech",
-    occupation: "Software developer",
-    company: "Openstream",
-    martialStatus: "Single",
-  };
+  @Input() profileInfo: User;
   constructor(  ) { }
 
   ngOnInit(): void {
