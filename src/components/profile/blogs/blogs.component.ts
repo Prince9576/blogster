@@ -35,23 +35,25 @@ export class BlogsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userId = this.authService.userId
-    this.blogService.getBlogs(this.pageSize, this.currentPage).subscribe((response) => {
-      console.log("Blogs fetched", response);
-      this.blogs = response.blogs;
-      this.blogsFetched = true;
-      this.showScrollLoader = false;
-      this.dataLength = response.length;
-    });
+    this.getBlogsHelper();
     this.createSub = this.blogService.blogCreated.subscribe((blog: any) => {
-      
+      console.log("Blog created", blog)
+      this.currentPage = 0;
+      this.getBlogsHelper();
     })
   }
 
   pageEvent(event) {
     console.log(event);
     this.currentPage = event.pageIndex + 1;
+    this.getBlogsHelper();
+  }
+
+  getBlogsHelper() {
     this.blogService.getBlogs(this.pageSize, this.currentPage).subscribe((response) => {
       this.dataLength = response.length;
+      this.blogsFetched = true;
+      this.showScrollLoader = false;
       this.blogs = response.blogs;
     })
   }
