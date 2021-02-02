@@ -7,6 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { SocialLinksComponent } from 'src/components/social-links/social-links.component';
 @NgModule({
     declarations: [ SocialLinksComponent ],
@@ -19,6 +23,10 @@ import { SocialLinksComponent } from 'src/components/social-links/social-links.c
         MatSlideToggleModule,
         MatDialogModule,
         MatDividerModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
     ],
     exports: [ 
                MatButtonModule,
@@ -29,6 +37,10 @@ import { SocialLinksComponent } from 'src/components/social-links/social-links.c
                MatSlideToggleModule,
                MatDialogModule,
                MatDividerModule,
+               MatRadioModule,
+               MatDatepickerModule,
+               MatNativeDateModule,
+               MatPaginatorModule,
                SocialLinksComponent
              ],
 })

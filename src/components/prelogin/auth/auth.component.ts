@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm, AbstractControl } from '@angular/forms';
 import { Constants } from 'src/providers/constants.service';
 import { Router } from '@angular/router';
 import { UserContextProvider } from 'src/providers/user-context.service';
@@ -8,6 +8,7 @@ import { AuthService } from 'src/providers/auth.service';
 import { Subscription } from 'rxjs';
 import { GenericMessageComponent } from '../../generic-message/generic-message.component';
 import { MatDialog } from '@angular/material/dialog';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-auth',
@@ -28,6 +29,8 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
   loginSub: Subscription;
   signupLoader: boolean;
   loginLoader: boolean;
+  minDate: Date;
+  maxDate: Date;
   constructor( private router: Router,
                private userContextProvider: UserContextProvider,
                private authService: AuthService,
@@ -35,6 +38,9 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
                ) { }
 
   ngOnInit(): void {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 70, 0, 1); 
+    this.maxDate = new Date(currentYear - 15, 11, 31); 
     this.createSignupForm();
     this.createLoginForm();
     this.signupSub = this.authService.signupStatusEmitter.subscribe((resp: { status: boolean, response: any} ) => {
@@ -45,6 +51,7 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     this.loginSub = this.authService.loginStatusEmitter.subscribe((resp: { status: boolean, response: any}) => {
+      console.log("In login sub", resp)
       this.completePostLoginRituals(resp);
     })
   }
@@ -63,6 +70,8 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
       name: new FormControl('', [ Validators.required, Validators.minLength(4), Validators.maxLength(100)]),
       email: new FormControl('', [ Validators.required, Validators.email, Validators.maxLength(250)] ),
       password: new FormControl('', [ Validators.required, Validators.minLength(6), Validators.maxLength(100) ]),
+      dob: new FormControl('', [ Validators.required ]),
+      gender: new FormControl('', [ Validators.required ])
     })
   }
 
@@ -96,6 +105,7 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   tabChanged(event: MatTabChangeEvent) {
+    console.log(this.signupForm);
     this.activeTabIndex = event.index;
   }
 
@@ -132,7 +142,16 @@ export class AuthComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loginFormRef.resetForm();
       if ( resp.status ) {
         console.log("User id before navigating", this.authService.userId);
-        this.router.navigate(['profile', this.authService.userId]);
+        this.router.navigate(['profile', this.authService.userId], { state: { mode: 'Owner'}} );
+      } else {
+        const dialogRef = this.dialog.open(GenericMessageComponent, {
+          width: window.innerWidth > 500 ? '20%' : '80%',
+          height: window.innerWidth > 500 ? '40%' : '35%',
+          data: {
+            type: "Error",
+            body: resp.error.error.message,
+          }
+        });
       }
   }
 

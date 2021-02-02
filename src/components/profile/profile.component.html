@@ -1,45 +1,55 @@
 <div class="container-fluid">
-    <div class="profile-wrapper">
-        <div class="row">
-            <div class="col-sm">
-                <div class="cover-outer">
-                    <div class="cover-inner">
-                        <!--Cover Photo-->
+    <div class = "loader" *ngIf= "loading">
+        <img src = "{{ICON_BASE}}loader.svg">
+    </div>
+    <ng-container *ngIf= "!loading">
+        <div class="profile-wrapper">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="cover-outer">
+                        <div class="cover-inner" [ngStyle]= "{ 'background-image': coverPicturePath }">
+                            <div class="dp-overlay" (click)= "profileUpload.click()">Change Cover Picture</div>
+                            <input class = "fake-file-upload" type="file" #profileUpload (change)= "fileUploaded($event, 'cover')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-picture">
+                <img [src]="profilePicturePath" class="img-fluid" (click)= "showFullView(fullPicView)">
+                <div class="short-info">
+                    <div class="short-info--name">
+                        {{ userInfo.name }}
+                    </div>
+                    <div class="short-info--bio">
+                        <span>{{ userInfo.gender }}, </span>
+                        <span>{{ userInfo.age }}</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="profile-picture">
-            <img [src]="profilePicturePath" class="img-fluid">
-            <div class="dp-overlay-wrapper">
-                <div class="dp-overlay">
+        <div class="details-wrapper">
+            <div class="row">
+                <div class="col-sm-3">
+                    <app-about [profileInfo]= "userInfo"></app-about>
                 </div>
-                <div class="dp-options">
-                    <div (click)= "profileUpload.click()">Upload Picture</div>
-                    <div (click)= "showFullView(fullPicView)">View Picture</div>
+                <div class="col-sm-5">
+                    <app-blogs></app-blogs>
                 </div>
-                <input class = "fake-file-upload" type="file" #profileUpload (change)= "fileUploaded($event)">
+                <div class="col-sm-4">
+                    <app-post></app-post>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="details-wrapper">
-        <div class="row">
-            <div class="col-sm-3">
-                <app-about [profileInfo]= "userInfo"></app-about>
-            </div>
-            <div class="col-sm-5">
-                <app-blogs></app-blogs>
-            </div>
-            <div class="col-sm-4">
-                <app-post></app-post>
-            </div>
-        </div>
-    </div>
+    </ng-container>
 </div>
 
 <!--PROFILE PICTURE FULL VIEW-->
 <ng-template #fullPicView>
-    <img src="https://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg" class="dp-fullview img-fluid">
+    <div class="dp-wrapper">
+        <img [src]="profilePicturePath" class="dp-fullview img-fluid">
+        <div class="dp-overlay" (click)= "profileUpload.click()">Change Profile Picture</div>
+        <input class = "fake-file-upload" type="file" #profileUpload (change)= "fileUploaded($event, 'dp')">
+    </div>
 </ng-template>
 
 <ng-template #profileUploadError>

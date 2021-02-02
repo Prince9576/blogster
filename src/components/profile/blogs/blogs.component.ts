@@ -1,66 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { DataService } from 'src/providers/data.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BlogComponent } from '../blog/blog.component';
+import { Blog } from 'src/models/blog.model';
+import { BlogService } from 'src/providers/blog.service';
+import { Subscription } from 'rxjs';
+import { Constants } from 'src/providers/constants.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/providers/auth.service';
 
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.scss']
 })
-export class BlogsComponent implements OnInit {
-  public alphabetCount: number = 100;
-  blogs = [
-    {
-      title: "Heavy Rain",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa atque placeat quam molestiae? Nam non est perspiciatis saepe necessitatibus veritatis delectus alias nostrum sit cumque dignissimos, et inventore quae corporis.",
-      author: "Prince Kumar",
-      like: 25,
-      love: 23
-    },
-    {
-      title: "Good Summer",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa atque placeat quam molestiae? Nam non est perspiciatis saepe necessitatibus veritatis delectus alias nostrum sit cumque dignissimos, et inventore quae corporis.",
-      author: "Piyush Kumar",
-      like: 125,
-      love: 2
-    },
-    {
-      title: "Good Summer",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa atque placeat quam molestiae? Nam non est perspiciatis saepe necessitatibus veritatis delectus alias nostrum sit cumque dignissimos, et inventore quae corporis.",
-      author: "Piyush Kumar",
-      like: 125,
-      love: 2
-    },
-    {
-      title: "Good Summer",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa atque placeat quam molestiae? Nam non est perspiciatis saepe necessitatibus veritatis delectus alias nostrum sit cumque dignissimos, et inventore quae corporis.",
-      author: "Piyush Kumar",
-      like: 125,
-      love: 2
-    },
-    {
-      title: "Good Summer",
-      body: "Lorem ipsum",
-      author: "Piyush Kumar",
-      like: 125,
-      love: 2
-    },
-  ]
-
-  constructor( private dataService: DataService, public dialog: MatDialog ) { }
+export class BlogsComponent implements OnInit, OnDestroy {
+  ICON_BASE = Constants.ICON_BASE;
+  blogs: Blog[];
+  blogsFetched: boolean;
+  fetchSub: Subscription;
+  createSub: Subscription;
+  showScrollLoader: boolean = false;
+  alphabetCount: number = 100;
+  pageSize: number = 10;
+  currentPage: number = 1;
+  showMyBlogs: boolean = false;
+  userId: string;
+  pageSizeOptions: number[] = [10, 15, 20];
+  dataLength: number;
+  constructor( public dialog: MatDialog,
+               private blogService: BlogService,
+               private router: Router,
+               private authService: AuthService ) { }
 
   ngOnInit(): void {
-    console.log(this.blogs);
+    this.userId = this.authService.userId
+    this.blogService.getBlogs(this.pageSize, this.currentPage).subscribe((response) => {
+      console.log("Blogs fetched", response);
+      this.blogs = response.blogs;
+      this.blogsFetched = true;
+      this.showScrollLoader = false;
+      this.dataLength = response.length;
+    });
+    this.createSub = this.blogService.blogCreated.subscribe((blog: any) => {
+      
+    })
   }
 
-  sliderChanged() {
-    console.log("Slider changed")
+  pageEvent(event) {
+    console.log(event);
+    this.currentPage = event.pageIndex + 1;
+    this.blogService.getBlogs(this.pageSize, this.currentPage).subscribe((response) => {
+      this.dataLength = response.length;
+      this.blogs = response.blogs;
+    })
   }
 
-  // viewMore(blog) {
-  //   this.dataService.popupActivity.next({ data: blog, state: "open"});
-  // }
+  ngOnDestroy() {
+    this.fetchSub.unsubscribe();
+    this.createSub.unsubscribe();
+  }
 
   viewMore(blog) {
     console.log("Hello")
@@ -71,6 +70,21 @@ export class BlogsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  goToUsersProfile(blog) {
+    this.router.navigate(["profile", blog.authorRef], { state: { mode: 'Guest'}} );
+  }
+
+  toggleLike(blog: Blog) {
+    this.blogService.likeBlog(this.userId, blog.id, blog).subscribe((response) => {
+      if ( blog.liked ) {
+        blog.like--;
+      } else {
+        blog.like++;
+      }
+      blog.liked = !blog.liked;
+    })
   }
 
 }

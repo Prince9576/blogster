@@ -10,6 +10,6 @@
         <p>{{ body }}</p>
     </div>
     <div class="button-wrapper">
-        <button class= "dlg-btn" mat-button mat-dialog-close>Okay</button>
+        <button [ngStyle]= "{ 'background-color': data.type === 'Error' ? '#dc3545' : '#41a85f'}" class= "dlg-btn" mat-button mat-dialog-close>Okay</button>
     </div>
 </div>

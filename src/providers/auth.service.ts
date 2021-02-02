@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { Signup } from 'src/models/signup.model';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,7 @@ export class AuthService {
     expireTimeout: any;
     constructor( private http: HttpClient, private router: Router ) {}
 
-    signup(signupData: { name: string, email: string, password: string }) {
+    signup(signupData: Signup) {
         this.http.post<any>(this.BASE_URL + "users/signup", signupData)
         .subscribe((response: any) => {
             console.log("Signup Response", response);

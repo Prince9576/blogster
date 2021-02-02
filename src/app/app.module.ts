@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from '../components/not-found/not-found.component';
 import { ProfileInfoProvider } from 'src/providers/profile-info.service';
 import { PreloginComponent } from '../components/prelogin/prelogin.component';
+import { BlogService } from 'src/providers/blog.service';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { PreloginComponent } from '../components/prelogin/prelogin.component';
                UserContextProvider,
                DataService,
                AuthService,
-               ProfileInfoProvider ],
+               ProfileInfoProvider,
+               BlogService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -8,14 +8,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class BlogComponent implements OnInit {
   title: string;
-  body: string;
+  content: string;
   constructor( 
     public dialogRef: MatDialogRef<BlogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any ) { }
 
   ngOnInit(): void {
     this.title = this.data.title;
-    this.body = this.data.body;
+    this.content = this.data.content;
   }
 
   close() {

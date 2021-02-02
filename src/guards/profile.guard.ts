@@ -11,7 +11,7 @@ export class ProfileGuard implements CanActivate {
          this.router.navigate(['']);
          return false;
        } else {
-           return true;
+         return true;
        }
     }
 }
